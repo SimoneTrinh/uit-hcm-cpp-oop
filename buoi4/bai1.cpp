@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-// Khai bao ham va toan tu vao va toan tu ra cho: 1. Lop Phan so
-
 class CPhanSo
 {
 private:

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-// Khai bao ham va toan tu vao va toan tu ra cho: 5. Lop don thuc : ax + by + cz = 0
 
 class CDonThuc
 {
@@ -96,6 +95,6 @@ CDonThuc CDonThuc::operator/=(CDonThuc x)
 {
     CDonThuc result;
     result.a = a * x.b;
-    result.b = b * x.a; 
+    result.b = b * x.a;
     return result;
 }

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-// Khai bao ham va toan tu vao va toan tu ra cho: 8. Lop hon so a:(b/c)
 
 class CHonSo
 {
