@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
+#include <iomanip>
 
 using namespace std;
 
@@ -25,32 +26,27 @@ protected:
     float _luongCoBan;
 
 public:
-    BaseNhanVien(string ID, string hoTen, string ngaySinh, float luongCoBan) : _ID(ID), _hoTen(hoTen), _ngaySinh(ngaySinh), _luongCoBan(luongCoBan) {};
+    BaseNhanVien(string ID, string hoTen, string ngaySinh, float luongCoBan) : _ID(ID), _hoTen(hoTen), _ngaySinh(ngaySinh), _luongCoBan(luongCoBan) {}
 
     virtual void Xuat()
     {
-        cout << "Nhan Vien | " << "ID: " << _ID << " | " << "Ho ten: " << _hoTen << " | " << "DOB: " << this->_ngaySinh << " | " << endl;
+        cout << "Nhan Vien | " << "ID: " << _ID << " | " << "Ho ten: " << _hoTen << " | " << "DOB: " << _ngaySinh << " | " << endl;
     };
-    
+
     virtual float TinhLuong()
     {
         return _luongCoBan;
     };
-
-    virtual float GetLuong()
-    {
-        return _luongCoBan;
-    }
 };
 
 class NhanVienVanPhong : public BaseNhanVien
 {
-protected:
+private:
     float _soNgayDiLam;
     float _troCap;
 
 public:
-    NhanVienVanPhong(string ID, string hoTen, string ngaySinh, float luongCoBan, float soNgayDiLam, float troCap) : BaseNhanVien(ID, hoTen, ngaySinh, luongCoBan), _soNgayDiLam(soNgayDiLam), _troCap(troCap) {};
+    NhanVienVanPhong(string ID, string hoTen, string ngaySinh, float luongCoBan, float soNgayDiLam, float troCap) : BaseNhanVien(ID, hoTen, ngaySinh, luongCoBan), _soNgayDiLam(soNgayDiLam), _troCap(troCap) {}
     float TinhLuong()
     {
         return _luongCoBan + (_soNgayDiLam * 100000) + _troCap;
@@ -59,11 +55,11 @@ public:
 
 class NhanVienSanXuat : public BaseNhanVien
 {
-protected:
+private:
     int _soSanPham;
 
 public:
-    NhanVienSanXuat(string ID, string hoTen, string ngaySinh, float luongCoBan, int soSanPham) : BaseNhanVien(ID, hoTen, ngaySinh, luongCoBan), _soSanPham(soSanPham) {};
+    NhanVienSanXuat(string ID, string hoTen, string ngaySinh, float luongCoBan, int soSanPham) : BaseNhanVien(ID, hoTen, ngaySinh, luongCoBan), _soSanPham(soSanPham) {}
     float TinhLuong()
     {
         return _luongCoBan + (_soSanPham * 2000);
@@ -72,12 +68,12 @@ public:
 
 class QuanLy : public BaseNhanVien
 {
-protected:
+private:
     float _heSoChucVu;
     float _thuong;
 
 public:
-    QuanLy(string ID, string hoTen, string ngaySinh, float luongCoBan, float heSoChucVu, float thuong) : BaseNhanVien(ID, hoTen, ngaySinh, luongCoBan), _heSoChucVu(heSoChucVu), _thuong(thuong) {};
+    QuanLy(string ID, string hoTen, string ngaySinh, float luongCoBan, float heSoChucVu, float thuong) : BaseNhanVien(ID, hoTen, ngaySinh, luongCoBan), _heSoChucVu(heSoChucVu), _thuong(thuong) {}
     float TinhLuong()
     {
         return (_luongCoBan * _heSoChucVu) + _thuong;
@@ -121,14 +117,16 @@ public:
 int main()
 {
     // QuanLy *ql1, ql2, ql3, ql4, ql5;
+    // Animal *animal1 = new Dog(25.0f, 60.0f, "Brown", true); // Dog weighs 25.0 units, 60.0 units tall, Brown color
+    // cout << animal1->getHeight() << endl;
 
     BaseNhanVien *ql1 = new QuanLy("NV001", "Nguyen Van A", "1985-05-20", 5000000, 1.2, 1000000);
 
     // vector<BaseNhanVien> *lstNhanVien = new vector<BaseNhanVien>;
 
     // lstNhanVien->push_back(*ql1);
-    cout << ql1->TinhLuong() << endl;
-    cout << ql1->GetLuong() << endl;
+    cout.precision(0);
+    cout << fixed << ql1->TinhLuong() << endl;
     ql1->Xuat();
 
     // lstNhanVien->push_back(ql2);
