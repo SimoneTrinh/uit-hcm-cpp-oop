@@ -26,14 +26,21 @@ protected:
 
 public:
     BaseNhanVien(string ID, string hoTen, string ngaySinh, float luongCoBan) : _ID(ID), _hoTen(hoTen), _ngaySinh(ngaySinh), _luongCoBan(luongCoBan) {};
+
     virtual void Xuat()
     {
         cout << "Nhan Vien | " << "ID: " << _ID << " | " << "Ho ten: " << _hoTen << " | " << "DOB: " << this->_ngaySinh << " | " << endl;
     };
+    
     virtual float TinhLuong()
     {
         return _luongCoBan;
     };
+
+    virtual float GetLuong()
+    {
+        return _luongCoBan;
+    }
 };
 
 class NhanVienVanPhong : public BaseNhanVien
@@ -115,12 +122,14 @@ int main()
 {
     // QuanLy *ql1, ql2, ql3, ql4, ql5;
 
-    BaseNhanVien *ql1 = new QuanLy("NV001", "Nguyen Van A", "1985-05-20", 5000000, 1.2f, 1000000);
+    BaseNhanVien *ql1 = new QuanLy("NV001", "Nguyen Van A", "1985-05-20", 5000000, 1.2, 1000000);
 
     // vector<BaseNhanVien> *lstNhanVien = new vector<BaseNhanVien>;
 
     // lstNhanVien->push_back(*ql1);
     cout << ql1->TinhLuong() << endl;
+    cout << ql1->GetLuong() << endl;
+    ql1->Xuat();
 
     // lstNhanVien->push_back(ql2);
     // lstNhanVien->push_back(ql3);
